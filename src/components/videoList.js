@@ -107,16 +107,24 @@ function renderTable(wrap, videos, container) {
       <td>${video.id}</td>
     `;
 
-    tr.querySelector('.action-play').addEventListener('click', () => {
+    tr.addEventListener('click', () => {
       openVideoPlayer(video.video_url, `${video.artist} — ${video.title}`, video.thumbnail_url);
     });
-    tr.querySelector('.action-images').addEventListener('click', () => {
+
+    tr.querySelector('.action-play').addEventListener('click', (e) => {
+      e.stopPropagation();
+      openVideoPlayer(video.video_url, `${video.artist} — ${video.title}`, video.thumbnail_url);
+    });
+    tr.querySelector('.action-images').addEventListener('click', (e) => {
+      e.stopPropagation();
       openImageViewer(video.thumbnail_url, video.album_artwork, `${video.artist} — ${video.title}`, video.link_out);
     });
-    tr.querySelector('.action-add-playlist').addEventListener('click', () => {
+    tr.querySelector('.action-add-playlist').addEventListener('click', (e) => {
+      e.stopPropagation();
       openAddToPlaylistModal(video);
     });
-    tr.querySelector('.action-clip').addEventListener('click', () => {
+    tr.querySelector('.action-clip').addEventListener('click', (e) => {
+      e.stopPropagation();
       openClipEditor(video, (updated) => {
         const idx = state.videos.findIndex(v => v.id === updated.id);
         if (idx >= 0) state.videos[idx] = updated;
