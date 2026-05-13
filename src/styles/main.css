@@ -112,7 +112,7 @@ table.video-table { width: 100%; border-collapse: collapse; font-size: 13px; }
 /* video player modal */
 .player-modal { width: min(900px, 95vw); }
 .player-modal .modal-body { padding: 0; background: #000; }
-.player-modal video { width: 100%; display: block; max-height: 75vh; }
+.player-modal video { width: 100%; display: block; aspect-ratio: 16/9; max-height: 75vh; }
 .player-body { position: relative; }
 .player-thumb-overlay { position: absolute; inset: 0; z-index: 10; background: #000; transition: opacity 1.1s ease; }
 .player-thumb-overlay img { width: 100%; height: 100%; object-fit: cover; display: block; }

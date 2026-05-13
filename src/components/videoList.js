@@ -73,13 +73,13 @@ function renderTable(wrap, videos, container) {
   table.innerHTML = `
     <thead>
       <tr>
-        <th>ID</th>
+        <th>Actions</th>
         <th>Artist</th>
         <th>Title</th>
         <th>Label</th>
         <th>Partner</th>
         <th>Release Date</th>
-        <th>Actions</th>
+        <th>ID</th>
       </tr>
     </thead>
     <tbody id="video-tbody"></tbody>
@@ -91,12 +91,6 @@ function renderTable(wrap, videos, container) {
     const tr = document.createElement('tr');
     tr.dataset.id = video.id;
     tr.innerHTML = `
-      <td>${video.id}</td>
-      <td class="truncate">${esc(video.artist)}</td>
-      <td class="truncate">${esc(video.title)}</td>
-      <td class="truncate">${esc(video.record_label)}</td>
-      <td>${esc(video.partner_account)}</td>
-      <td>${video.originalreleasedate || '—'}</td>
       <td class="actions">
         <div class="actions-cell">
           <button class="btn-icon action-play" title="Stream video">▶️</button>
@@ -105,6 +99,12 @@ function renderTable(wrap, videos, container) {
           <button class="btn-icon action-add-playlist" title="Add to playlist">＋</button>
         </div>
       </td>
+      <td class="truncate">${esc(video.artist)}</td>
+      <td class="truncate">${esc(video.title)}</td>
+      <td class="truncate">${esc(video.record_label)}</td>
+      <td>${esc(video.partner_account)}</td>
+      <td>${video.originalreleasedate || '—'}</td>
+      <td>${video.id}</td>
     `;
 
     tr.querySelector('.action-play').addEventListener('click', () => {

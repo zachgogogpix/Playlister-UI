@@ -2,10 +2,6 @@ export function renderFilters(container, partners, currentFilters, onChange) {
   container.innerHTML = `
     <div class="filters-bar">
       <div class="filter-group">
-        <label>ID</label>
-        <input type="text" id="f-vid" placeholder="ID or UUID…" value="${currentFilters.video_id || ''}">
-      </div>
-      <div class="filter-group">
         <label>Artist</label>
         <input type="text" id="f-artist" placeholder="Search artist…" value="${currentFilters.artist || ''}">
       </div>
@@ -35,6 +31,10 @@ export function renderFilters(container, partners, currentFilters, onChange) {
           </select>
           <input type="date" id="f-date-val" value="${currentFilters.date_val || ''}">
         </div>
+      </div>
+      <div class="filter-group">
+        <label>ID</label>
+        <input type="text" id="f-vid" placeholder="ID or UUID…" value="${currentFilters.video_id || ''}">
       </div>
       <div class="filter-group" style="justify-content:flex-end">
         <label>&nbsp;</label>
