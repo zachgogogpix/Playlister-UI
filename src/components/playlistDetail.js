@@ -278,8 +278,10 @@ async function loadSelectorResults(query, listEl, playlist, existingIds, contain
           try {
             await addVideoToPlaylist(playlist.id, v.id);
             existingIds.add(v.id);
-            const pv = { id: Date.now(), playlist_id: playlist.id, video_id: v.id, order: playlist.videos.length, video: v };
-            playlist.videos.push(pv);
+            const pv = { id: Date.now(), playlist_id: playlist.id, video_id: v.id, order: 0, video: v };
+            // Shift all existing videos down by incrementing their order
+            playlist.videos.forEach(pv => pv.order++);
+            playlist.videos.unshift(pv);
             renderPlaylistVideos(container, playlist, existingIds);
             updateCount(container, playlist.videos.length);
             item.querySelector('.selector-add-btn').textContent = '✓';
