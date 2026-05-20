@@ -1,4 +1,4 @@
-const BASE = 'http://161.35.53.226:8000/api';
+const BASE = 'http://147.182.133.219:8000/api';
 
 async function req(method, path, body, isForm = false) {
   const opts = { method, headers: {} };
