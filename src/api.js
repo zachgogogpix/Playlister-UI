@@ -1,4 +1,4 @@
-const BASE = 'http://147.182.133.219:8000/api';
+const BASE = import.meta.env.VITE_API_BASE_URL || 'http://147.182.133.219:8000/api';
 
 async function req(method, path, body, isForm = false) {
   const opts = { method, headers: {} };

@@ -1,5 +1,6 @@
 import { renderVideoTab } from './components/videoList.js';
 import { renderPlaylistsTab } from './components/playlists.js';
+import { checkAuth, showPasswordPrompt } from './auth.js';
 
 const tabs = {
   videos: document.getElementById('tab-videos'),
@@ -17,6 +18,15 @@ btns.forEach(btn => {
   btn.addEventListener('click', () => switchTab(btn.dataset.tab));
 });
 
-// Bootstrap tabs
-renderVideoTab(tabs.videos);
-renderPlaylistsTab(tabs.playlists);
+// Bootstrap application
+function initializeApp() {
+  renderVideoTab(tabs.videos);
+  renderPlaylistsTab(tabs.playlists);
+}
+
+// Check authentication on app load
+if (checkAuth()) {
+  initializeApp();
+} else {
+  showPasswordPrompt(initializeApp);
+}
