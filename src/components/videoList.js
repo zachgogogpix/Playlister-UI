@@ -4,6 +4,7 @@ import { openVideoPlayer } from './videoPlayer.js';
 import { openImageViewer } from './imageViewer.js';
 import { openClipEditor } from './clipEditor.js';
 import { openAddToPlaylistModal } from './addToPlaylist.js';
+import { openEmojiKeyingTool } from './emojiKeyingTool.js';
 import { showToast } from './toast.js';
 
 const state = {
@@ -96,6 +97,7 @@ function renderTable(wrap, videos, container) {
           <button class="btn-icon action-play" title="Stream video">▶️</button>
           <button class="btn-icon action-images" title="View images">🖼</button>
           <button class="btn-icon action-clip" title="Clip editor">✂️</button>
+          <button class="btn-icon action-emoji-keys" title="Emoji keys">🏷️</button>
           <button class="btn-icon action-add-playlist" title="Add to playlist">＋</button>
         </div>
       </td>
@@ -129,6 +131,10 @@ function renderTable(wrap, videos, container) {
         const idx = state.videos.findIndex(v => v.id === updated.id);
         if (idx >= 0) state.videos[idx] = updated;
       });
+    });
+    tr.querySelector('.action-emoji-keys').addEventListener('click', (e) => {
+      e.stopPropagation();
+      openEmojiKeyingTool(video);
     });
 
     tbody.appendChild(tr);

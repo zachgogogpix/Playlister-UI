@@ -85,3 +85,12 @@ export function reorderPlaylistVideos(playlistId, items) {
 export function openClipEventStream(videoId) {
   return new EventSource(`${BASE}/clips/${videoId}/generate`);
 }
+
+// ── Emoji Keys ────────────────────────────────────────────
+export function fetchVideoEmojiKeys(videoId) {
+  return req('GET', `/videos/${videoId}/emoji-keys`);
+}
+
+export function updateVideoEmojiKeys(videoId, keys) {
+  return req('PATCH', `/videos/${videoId}/emoji-keys`, keys);
+}

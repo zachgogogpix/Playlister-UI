@@ -5,6 +5,7 @@ import {
   updatePlaylist, archivePlaylist,
 } from '../api.js';
 import { openVideoPlayer } from './videoPlayer.js';
+import { openEmojiKeyingTool } from './emojiKeyingTool.js';
 import { showToast } from './toast.js';
 
 export async function renderPlaylistDetail(container, playlistId, onBack) {
@@ -156,6 +157,7 @@ function renderPlaylistVideos(container, playlist, existingIds) {
       </div>
       <div class="pl-video-actions">
         ${v?.video_url ? `<button class="btn-icon pv-play" title="Play">▶️</button>` : ''}
+        <button class="btn-icon pv-emoji-keys" title="Emoji keys">🏷️</button>
         <button class="btn-icon pv-remove" title="Remove" style="color:var(--danger)">✕</button>
       </div>
     `;
@@ -166,6 +168,11 @@ function renderPlaylistVideos(container, playlist, existingIds) {
         openVideoPlayer(v.video_url, `${v.artist} — ${v.title}`, v?.thumbnail_url);
       });
     }
+
+    item.querySelector('.pv-emoji-keys').addEventListener('click', (e) => {
+      e.stopPropagation();
+      openEmojiKeyingTool(v);
+    });
 
     item.querySelector('.pv-remove').addEventListener('click', async (e) => {
       e.stopPropagation();
