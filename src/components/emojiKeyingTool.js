@@ -1,45 +1,20 @@
-import { fetchVideoEmojiKeys, updateVideoEmojiKeys } from '../api.js';
+import { fetchEmojiKeyDefinitions, fetchVideoEmojiKeys, updateVideoEmojiKeys } from '../api.js';
 import { showToast } from './toast.js';
 
-// Define emoji key options for each group
-const EMOJI_KEY_OPTIONS = {
-  genre: [
-    { emoji: '◼️', label: 'Punk Rock', value: 'punk_rock' },
-    { emoji: '🤘', label: 'Metal', value: 'metal' },
-    { emoji: '🎸', label: 'Alternative', value: 'alternative' },
-    { emoji: '❤️', label: 'R&B/Soul', value: 'r&b_soul' },
-    { emoji: '🎤', label: 'Hip Hop/Rap', value: 'hip_hop_rap' },
-    { emoji: '🎲', label: 'Electronic/Dance', value: 'electronic_dance' },
-    { emoji: '💋', label: 'Pop', value: 'pop' },
-    { emoji: '🎻', label: 'Classical', value: 'classical' },
-    { emoji: '🤠', label: 'Country', value: 'country' },
-    { emoji: '🚴', label: 'Indie', value: 'indie' },
-  ],
-  mood: [
-    { emoji: '😊', label: 'Happy', value: 'happy' },
-    { emoji: '😢', label: 'Sad', value: 'sad' },
-    { emoji: '😌', label: 'Chill', value: 'chill' },
-    { emoji: '🔥', label: 'Energetic', value: 'energetic' },
-    { emoji: '💭', label: 'Thoughtful', value: 'thoughtful' },
-    { emoji: '😴', label: 'Mellow', value: 'mellow' },
-    { emoji: '💪', label: 'Powerful', value: 'powerful' },
-    { emoji: '🌙', label: 'Dark', value: 'dark' },
-    { emoji: '🌞', label: 'Uplifting', value: 'uplifting' },
-    { emoji: '💔', label: 'Melancholic', value: 'melancholic' },
-  ],
-  tags: [
-    { emoji: '🎬', label: 'Cinematic', value: 'cinematic' },
-    { emoji: '🎹', label: 'Piano', value: 'piano' },
-    { emoji: '🎺', label: 'Horn Section', value: 'horn_section' },
-    { emoji: '🥁', label: 'Drum Heavy', value: 'drum_heavy' },
-    { emoji: '🎵', label: 'Melodic', value: 'melodic' },
-    { emoji: '🔊', label: 'Bass Heavy', value: 'bass_heavy' },
-    { emoji: '🎙️', label: 'Vocal Focus', value: 'vocal_focus' },
-    { emoji: '🔁', label: 'Looping', value: 'looping' },
-    { emoji: '⚡', label: 'Fast Tempo', value: 'fast_tempo' },
-    { emoji: '🐌', label: 'Slow Tempo', value: 'slow_tempo' },
-  ],
-};
+// Emoji key options are loaded from the API (key_choices_menu table).
+// Cached for the session after the first successful fetch.
+let EMOJI_KEY_OPTIONS = null;
+
+async function loadKeyDefinitions() {
+  if (EMOJI_KEY_OPTIONS) return EMOJI_KEY_OPTIONS;
+  const defs = await fetchEmojiKeyDefinitions();
+  EMOJI_KEY_OPTIONS = {
+    genre: defs.genre || [],
+    mood: defs.mood || [],
+    tags: defs.tags || [],
+  };
+  return EMOJI_KEY_OPTIONS;
+}
 
 export async function openEmojiKeyingTool(video, onUpdate) {
   const backdrop = document.getElementById('modal-backdrop');
@@ -76,13 +51,26 @@ export async function openEmojiKeyingTool(video, onUpdate) {
 
   const sectionsEl = container.querySelector('#ek-sections');
 
+  // Load the available key choices from the API
+  try {
+    await loadKeyDefinitions();
+  } catch (e) {
+    console.error('Failed to load emoji key definitions:', e);
+    sectionsEl.innerHTML = `<div style="color:var(--danger, #e05252);padding:16px;font-size:13px">Could not load key choices from the API: ${esc(e.message)}</div>`;
+    return;
+  }
+
   // Fetch existing emoji keys for this video
   let existingKeys = { genre: [], mood: [], tags: [] };
   try {
-    existingKeys = await fetchVideoEmojiKeys(video.id);
+    const keys = await fetchVideoEmojiKeys(video.id);
+    existingKeys = {
+      genre: keys?.genre || [],
+      mood: keys?.mood || [],
+      tags: keys?.tags || [],
+    };
   } catch (e) {
-    // If endpoint doesn't exist yet, use empty defaults
-    console.warn('Emoji keys endpoint not available, using defaults:', e);
+    console.warn('Could not fetch existing emoji keys, using empty defaults:', e);
   }
 
   renderSections(sectionsEl, video.id, existingKeys, onUpdate);

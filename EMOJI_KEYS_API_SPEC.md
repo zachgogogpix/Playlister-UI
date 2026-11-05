@@ -81,40 +81,53 @@ GET /api/emoji-keys/definitions
 ```json
 {
   "genre": [
-    {"value": "punk_rock", "emoji": "◼️", "label": "Punk Rock"},
-    {"value": "metal", "emoji": "🤘", "label": "Metal"},
     {"value": "alternative", "emoji": "🎸", "label": "Alternative"},
-    {"value": "r&b_soul", "emoji": "❤️", "label": "R&B/Soul"},
-    {"value": "hip_hop_rap", "emoji": "🎤", "label": "Hip Hop/Rap"},
-    {"value": "electronic_dance", "emoji": "🎲", "label": "Electronic/Dance"},
+    {"value": "indie", "emoji": "🚴", "label": "Indie"},
+    {"value": "folk", "emoji": "🌻", "label": "Folk"},
+    {"value": "rnb_soul", "emoji": "❤️‍🔥", "label": "R&B / Soul"},
+    {"value": "hip_hop_rap", "emoji": "🎙", "label": "Hip Hop / Rap"},
+    {"value": "electronic_dance", "emoji": "🎛️", "label": "Electronic / Dance"},
     {"value": "pop", "emoji": "💋", "label": "Pop"},
-    {"value": "classical", "emoji": "🎻", "label": "Classical"},
+    {"value": "psych", "emoji": "😵‍💫", "label": "Psych"},
+    {"value": "punk_rock", "emoji": "🏴", "label": "Punk Rock"},
+    {"value": "metal", "emoji": "🤘", "label": "Metal"},
     {"value": "country", "emoji": "🤠", "label": "Country"},
-    {"value": "indie", "emoji": "🚴", "label": "Indie"}
+    {"value": "jazz", "emoji": "🎷", "label": "Jazz"},
+    {"value": "classical", "emoji": "🎻", "label": "Classical"}
   ],
   "mood": [
-    {"value": "happy", "emoji": "😊", "label": "Happy"},
-    {"value": "sad", "emoji": "😢", "label": "Sad"},
-    {"value": "chill", "emoji": "😌", "label": "Chill"},
-    {"value": "energetic", "emoji": "🔥", "label": "Energetic"},
-    {"value": "thoughtful", "emoji": "💭", "label": "Thoughtful"},
-    {"value": "mellow", "emoji": "😴", "label": "Mellow"},
-    {"value": "powerful", "emoji": "💪", "label": "Powerful"},
-    {"value": "dark", "emoji": "🌙", "label": "Dark"},
-    {"value": "uplifting", "emoji": "🌞", "label": "Uplifting"},
-    {"value": "melancholic", "emoji": "💔", "label": "Melancholic"}
+    {"value": "energized", "emoji": "⚡", "label": "Energized"},
+    {"value": "celebrating", "emoji": "🙌", "label": "Celebrating"},
+    {"value": "focused", "emoji": "⏳", "label": "Focused"},
+    {"value": "happy", "emoji": "😀", "label": "Happy"},
+    {"value": "chillin", "emoji": "😎", "label": "Chillin"},
+    {"value": "romantic", "emoji": "🥰", "label": "Romantic"},
+    {"value": "mellow", "emoji": "🍄", "label": "Mellow"},
+    {"value": "meditation", "emoji": "🧘🏽‍♂️", "label": "Meditation"},
+    {"value": "sad", "emoji": "😓", "label": "Sad"},
+    {"value": "drab", "emoji": "🥀", "label": "Drab"},
+    {"value": "mad", "emoji": "😡", "label": "Mad"},
+    {"value": "blown_away", "emoji": "🤯", "label": "Blown Away"},
+    {"value": "rebellious", "emoji": "😈", "label": "Rebellious"},
+    {"value": "inspired", "emoji": "💡", "label": "Inspired"},
+    {"value": "heartbroken", "emoji": "❤️‍🩹", "label": "Heartbroken"}
   ],
   "tags": [
-    {"value": "cinematic", "emoji": "🎬", "label": "Cinematic"},
-    {"value": "piano", "emoji": "🎹", "label": "Piano"},
-    {"value": "horn_section", "emoji": "🎺", "label": "Horn Section"},
-    {"value": "drum_heavy", "emoji": "🥁", "label": "Drum Heavy"},
-    {"value": "melodic", "emoji": "🎵", "label": "Melodic"},
-    {"value": "bass_heavy", "emoji": "🔊", "label": "Bass Heavy"},
-    {"value": "vocal_focus", "emoji": "🎙️", "label": "Vocal Focus"},
-    {"value": "looping", "emoji": "🔁", "label": "Looping"},
-    {"value": "fast_tempo", "emoji": "⚡", "label": "Fast Tempo"},
-    {"value": "slow_tempo", "emoji": "🐌", "label": "Slow Tempo"}
+    {"value": "wildcard", "emoji": "🃏", "label": "Wildcard "},
+    {"value": "turn_ups", "emoji": "🔥", "label": "Turn Ups"},
+    {"value": "gamer-friendly", "emoji": "🎮", "label": "Gamer Friendly"},
+    {"value": "surreal", "emoji": "🪐", "label": "surreal"},
+    {"value": "shiny_new_pop", "emoji": "💎", "label": "Shiny, New Pop"},
+    {"value": "workout", "emoji": "💪", "label": "Workout"},
+    {"value": "dope", "emoji": "💯", "label": "Dope"},
+    {"value": "spiritual", "emoji": "🕉️", "label": "Spiritual"},
+    {"value": "hey_girl", "emoji": "🍒", "label": "Hey Girl!"},
+    {"value": "sunny_day", "emoji": "🌞", "label": "Sunny Day"},
+    {"value": "fourtwenty_friendly", "emoji": "💨", "label": "420 Friendly"},
+    {"value": "christian", "emoji": "✝️", "label": "Christian"},
+    {"value": "farm_and_field", "emoji": "🌾", "label": "Farm and Field"},
+    {"value": "manly", "emoji": "🪓", "label": "Manly"},
+    {"value": "late_night", "emoji": "🌙", "label": "Late Night"}
   ]
 }
 ```
@@ -146,8 +159,8 @@ GET /api/videos/12345/emoji-keys
 ```json
 {
   "genre": ["metal", "electronic_dance"],
-  "mood": ["energetic", "dark"],
-  "tags": ["drum_heavy", "fast_tempo"]
+  "mood": ["energized", "drab"],
+  "tags": ["workout", "turn_ups"]
 }
 ```
 
@@ -173,7 +186,7 @@ Content-Type: application/json
 
 {
   "genre": ["metal", "punk_rock"],
-  "mood": ["energetic"]
+  "mood": ["energized"]
 }
 ```
 
@@ -181,8 +194,8 @@ Content-Type: application/json
 ```json
 {
   "genre": ["metal", "punk_rock"],
-  "mood": ["energetic"],
-  "tags": ["drum_heavy", "fast_tempo"]
+  "mood": ["energized"],
+  "tags": ["workout", "turn_ups"]
 }
 ```
 
@@ -266,15 +279,15 @@ Body: {"genre": ["metal", "electronic_dance"]}
 ### Test Case 3: Add Mood Keys (Partial Update)
 ```bash
 PATCH /api/videos/123/emoji-keys
-Body: {"mood": ["energetic", "dark"]}
-# Expected: {"genre": ["metal", "electronic_dance"], "mood": ["energetic", "dark"], "tags": []}
+Body: {"mood": ["energized", "drab"]}
+# Expected: {"genre": ["metal", "electronic_dance"], "mood": ["energized", "drab"], "tags": []}
 ```
 
 ### Test Case 4: Update Genre (Replace)
 ```bash
 PATCH /api/videos/123/emoji-keys
 Body: {"genre": ["punk_rock"]}
-# Expected: {"genre": ["punk_rock"], "mood": ["energetic", "dark"], "tags": []}
+# Expected: {"genre": ["punk_rock"], "mood": ["energized", "drab"], "tags": []}
 ```
 
 ### Test Case 5: Clear Mood Keys
@@ -286,43 +299,58 @@ Body: {"mood": []}
 
 ## Seed Data for key_choices_menu
 
+> Synced from the live API (`GET /api/emoji-keys/definitions`) on 2026-11-05 as a backup of the production `key_choices_menu` table. `display_order` reflects the order returned by the API.
+
 ```sql
 INSERT INTO key_choices_menu (key_group, key_value, emoji, label, display_order) VALUES
 -- Genre
-('genre', 'punk_rock', '◼️', 'Punk Rock', 1),
-('genre', 'metal', '🤘', 'Metal', 2),
-('genre', 'alternative', '🎸', 'Alternative', 3),
-('genre', 'r&b_soul', '❤️', 'R&B/Soul', 4),
-('genre', 'hip_hop_rap', '🎤', 'Hip Hop/Rap', 5),
-('genre', 'electronic_dance', '🎲', 'Electronic/Dance', 6),
+('genre', 'alternative', '🎸', 'Alternative', 1),
+('genre', 'indie', '🚴', 'Indie', 2),
+('genre', 'folk', '🌻', 'Folk', 3),
+('genre', 'rnb_soul', '❤️‍🔥', 'R&B / Soul', 4),
+('genre', 'hip_hop_rap', '🎙', 'Hip Hop / Rap', 5),
+('genre', 'electronic_dance', '🎛️', 'Electronic / Dance', 6),
 ('genre', 'pop', '💋', 'Pop', 7),
-('genre', 'classical', '🎻', 'Classical', 8),
-('genre', 'country', '🤠', 'Country', 9),
-('genre', 'indie', '🚴', 'Indie', 10),
+('genre', 'psych', '😵‍💫', 'Psych', 8),
+('genre', 'punk_rock', '🏴', 'Punk Rock', 9),
+('genre', 'metal', '🤘', 'Metal', 10),
+('genre', 'country', '🤠', 'Country', 11),
+('genre', 'jazz', '🎷', 'Jazz', 12),
+('genre', 'classical', '🎻', 'Classical', 13),
 
 -- Mood
-('mood', 'happy', '😊', 'Happy', 1),
-('mood', 'sad', '😢', 'Sad', 2),
-('mood', 'chill', '😌', 'Chill', 3),
-('mood', 'energetic', '🔥', 'Energetic', 4),
-('mood', 'thoughtful', '💭', 'Thoughtful', 5),
-('mood', 'mellow', '😴', 'Mellow', 6),
-('mood', 'powerful', '💪', 'Powerful', 7),
-('mood', 'dark', '🌙', 'Dark', 8),
-('mood', 'uplifting', '🌞', 'Uplifting', 9),
-('mood', 'melancholic', '💔', 'Melancholic', 10),
+('mood', 'energized', '⚡', 'Energized', 1),
+('mood', 'celebrating', '🙌', 'Celebrating', 2),
+('mood', 'focused', '⏳', 'Focused', 3),
+('mood', 'happy', '😀', 'Happy', 4),
+('mood', 'chillin', '😎', 'Chillin', 5),
+('mood', 'romantic', '🥰', 'Romantic', 6),
+('mood', 'mellow', '🍄', 'Mellow', 7),
+('mood', 'meditation', '🧘🏽‍♂️', 'Meditation', 8),
+('mood', 'sad', '😓', 'Sad', 9),
+('mood', 'drab', '🥀', 'Drab', 10),
+('mood', 'mad', '😡', 'Mad', 11),
+('mood', 'blown_away', '🤯', 'Blown Away', 12),
+('mood', 'rebellious', '😈', 'Rebellious', 13),
+('mood', 'inspired', '💡', 'Inspired', 14),
+('mood', 'heartbroken', '❤️‍🩹', 'Heartbroken', 15),
 
 -- Tags
-('tags', 'cinematic', '🎬', 'Cinematic', 1),
-('tags', 'piano', '🎹', 'Piano', 2),
-('tags', 'horn_section', '🎺', 'Horn Section', 3),
-('tags', 'drum_heavy', '🥁', 'Drum Heavy', 4),
-('tags', 'melodic', '🎵', 'Melodic', 5),
-('tags', 'bass_heavy', '🔊', 'Bass Heavy', 6),
-('tags', 'vocal_focus', '🎙️', 'Vocal Focus', 7),
-('tags', 'looping', '🔁', 'Looping', 8),
-('tags', 'fast_tempo', '⚡', 'Fast Tempo', 9),
-('tags', 'slow_tempo', '🐌', 'Slow Tempo', 10);
+('tags', 'wildcard', '🃏', 'Wildcard ', 1),
+('tags', 'turn_ups', '🔥', 'Turn Ups', 2),
+('tags', 'gamer-friendly', '🎮', 'Gamer Friendly', 3),
+('tags', 'surreal', '🪐', 'surreal', 4),
+('tags', 'shiny_new_pop', '💎', 'Shiny, New Pop', 5),
+('tags', 'workout', '💪', 'Workout', 6),
+('tags', 'dope', '💯', 'Dope', 7),
+('tags', 'spiritual', '🕉️', 'Spiritual', 8),
+('tags', 'hey_girl', '🍒', 'Hey Girl!', 9),
+('tags', 'sunny_day', '🌞', 'Sunny Day', 10),
+('tags', 'fourtwenty_friendly', '💨', '420 Friendly', 11),
+('tags', 'christian', '✝️', 'Christian', 12),
+('tags', 'farm_and_field', '🌾', 'Farm and Field', 13),
+('tags', 'manly', '🪓', 'Manly', 14),
+('tags', 'late_night', '🌙', 'Late Night', 15);
 ```
 
 ## Future Enhancements (Optional)

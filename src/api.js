@@ -87,6 +87,10 @@ export function openClipEventStream(videoId) {
 }
 
 // ── Emoji Keys ────────────────────────────────────────────
+export function fetchEmojiKeyDefinitions() {
+  return req('GET', '/emoji-keys/definitions');
+}
+
 export function fetchVideoEmojiKeys(videoId) {
   return req('GET', `/videos/${videoId}/emoji-keys`);
 }
